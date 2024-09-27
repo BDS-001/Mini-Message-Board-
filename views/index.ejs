@@ -1,0 +1,8 @@
+<html>
+    <head>
+        <title><% title %></title>
+    </head>
+    <body>
+        <%- messages.map(message => include('partials/messageFormat', {message})).join('') %>
+    </body>
+</html>
