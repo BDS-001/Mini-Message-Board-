@@ -14,9 +14,15 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+
+// --- Middleware Setup ---
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // --- Routes ---
-app.use('/new', newMessageRouter)
 app.use('/', indexRouter)
+app.use('/new', newMessageRouter)
 
 // 404 handler
 app.use((req, res, next) => {
