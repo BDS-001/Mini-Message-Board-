@@ -3,6 +3,7 @@
         <title><% title %></title>
     </head>
     <body>
+        <a href="/new">New Message</a>
         <%- messages.map(message => include('partials/messageFormat', {message})).join('') %>
     </body>
 </html>
