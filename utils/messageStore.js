@@ -38,5 +38,4 @@ initializeTestData();
 module.exports = {
     getAllMessages,
     addMessage,
-    getMessageById
 };
