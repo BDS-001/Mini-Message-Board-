@@ -29,6 +29,10 @@ function getAllMessages() {
     return Object.values(messages)
 }
 
+function getMessageById(id) {
+    return messages[id]
+}
+
 function addMessage(message, user) {
     const newMessage = { id: generateId(), text: message, user: user, added: new Date() }
     messages[newMessage.id] = newMessage
@@ -38,4 +42,5 @@ initializeTestData();
 module.exports = {
     getAllMessages,
     addMessage,
+    getMessageById
 };

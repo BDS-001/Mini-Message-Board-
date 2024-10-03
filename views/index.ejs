@@ -1,9 +1,14 @@
 <html>
     <head>
-        <title><% title %></title>
+        <title><%= title %></title>
     </head>
     <body>
         <a href="/new">New Message</a>
-        <%- messages.map(message => include('partials/messageFormat', {message})).join('') %>
+        <% messages.forEach(function(message) { %>
+            <div class="message">
+                <%- include('partials/messageFormat', {message: message}) %>
+                <button class="message-details-button" onclick="window.location.href='/message/<%= message.id %>'" data-id="<%= message.id %>">View Details</button>
+            </div>
+        <% }); %>
     </body>
 </html>
