@@ -1,11 +1,7 @@
 const router = require("express").Router();
-const { addMessage } = require('../controllers/messageStore');
+const messageController = require('../controllers/messageController');
 
-router.get("/", (req, res) => res.render("newMessage", {}));
-router.post('/', (req, res) => {
-    const { message, user } = req.body;
-    addMessage(message, user);
-    res.status(201).redirect('/');
-  });
+router.get("/", messageController.createMessageGet);
+router.post('/', messageController.createMessagePost);
 
 module.exports = router;

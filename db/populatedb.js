@@ -9,7 +9,7 @@ const databasePort = process.env.DATABASE_PORT || 5432
 const dbName = 'mini_message_board'
 
 const SQL = `
-CREATE TABLE IF NOT EXISTS usernames (
+CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name VARCHAR ( 255 ),
   message TEXT,
@@ -21,7 +21,7 @@ const checkTableSQL = `
 SELECT EXISTS (
    SELECT FROM information_schema.tables 
    WHERE  table_schema = 'public'
-   AND    table_name   = 'usernames'
+   AND    table_name   = 'messages'
 );
 `;
 
@@ -35,11 +35,11 @@ async function setupDatabase() {
     const tableExists = res.rows[0].exists;
 
     if (!tableExists) {
-      console.log("Table 'usernames' does not exist. Creating...");
+      console.log("Table 'messages' does not exist. Creating...");
       await client.query(createTableSQL);
-      console.log("Table 'usernames' created successfully.");
+      console.log("Table 'messages' created successfully.");
     } else {
-      console.log("Table 'usernames' already exists. Skipping creation.");
+      console.log("Table 'messages' already exists. Skipping creation.");
     }
     } catch (err) {
         throw new AppError('Database setup failed', 500, err);

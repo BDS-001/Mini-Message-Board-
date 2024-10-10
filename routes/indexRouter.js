@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const { getAllMessages, getMessageById } = require('../controllers/messageStore');
+const messageController = require('../controllers/messageController');
 
-router.get("/", (req, res) => res.render("index", { title: "Mini Messageboard", messages: getAllMessages() }));
-router.get('/message/:id', (req, res) => res.render("messageDetails", { title: "Message Details", message: getMessageById(req.params.id) }))
+router.get("/", messageController.getMessages);
+router.get('/message/:id', messageController.getMessageById)
 
 module.exports = router;
