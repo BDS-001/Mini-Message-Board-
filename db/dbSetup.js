@@ -1,4 +1,4 @@
-const pool = require('./pool'); // Adjust the path as needed
+const pool = require('./pool');
 const AppError = require('../utils/customErrors');
 
 const createTableSQL = `

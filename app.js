@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const errorHandler = require('./middleware/errorHandler');
 const AppError = require('./utils/customErrors');
-const {setupDatabase} = require('./db/populatedb')
+const {setupDatabase} = require('./db/dbSetup')
 const path = require("node:path");
 
 const newMessageRouter = require('./routes/newMessageRouter')
