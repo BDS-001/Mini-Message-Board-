@@ -37,7 +37,7 @@ app.use(errorHandler);
 const PORT = parseInt(process.env.USE_PORT, 10) || 3000;
 async function startServer() {
     try {
-        await setupDatabase(); // Run database setup before starting the server
+        await setupDatabase();
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
             console.log(`Visit: http://localhost:${PORT}/`);
