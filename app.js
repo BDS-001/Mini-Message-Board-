@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const errorHandler = require('./middleware/errorHandler');
 const AppError = require('./utils/customErrors');
+const {setupDatabase} = require('./db/populatedb')
 const path = require("node:path");
 
 const newMessageRouter = require('./routes/newMessageRouter')
@@ -34,4 +35,17 @@ app.use(errorHandler);
 
 // --- Server Configuration and Startup ---
 const PORT = parseInt(process.env.USE_PORT, 10) || 3000;
-app.listen(PORT, () => console.log(`listening on port ${PORT}!\nVisit: http://localhost:3000/`));
+async function startServer() {
+    try {
+        await setupDatabase(); // Run database setup before starting the server
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+            console.log(`Visit: http://localhost:${PORT}/`);
+        });
+    } catch (err) {
+        console.error('Failed to start server:', err);
+        process.exit(1);
+    }
+}
+
+startServer();
