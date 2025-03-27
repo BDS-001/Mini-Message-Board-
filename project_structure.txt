@@ -1,0 +1,29 @@
+./
+├── app.js
+├── controllers
+│   └── messageController.js
+├── db
+│   ├── dbSetup.js
+│   ├── pool.js
+│   └── queries.js
+├── middleware
+│   └── errorHandler.js
+├── package.json
+├── package-lock.json
+├── project_structure.txt
+├── public
+├── README.md
+├── routes
+│   ├── indexRouter.js
+│   └── newMessageRouter.js
+├── utils
+│   └── customErrors.js
+└── views
+    ├── 404.ejs
+    ├── index.ejs
+    ├── messageDetails.ejs
+    ├── newMessage.ejs
+    └── partials
+        └── messageFormat.ejs
+
+9 directories, 18 files
